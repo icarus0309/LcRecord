@@ -21,12 +21,12 @@ public:
             );
             return;
         }
-        unordered_set<int> antiDuplicateCurLayer;
+        // unordered_set<int> antiDuplicateCurLayer;
         for (int i = 0; i < numSize; i++) {
-            if ((!passed[i]) && 
-                (antiDuplicateCurLayer.find(nums[i]) == antiDuplicateCurLayer.end())
+            if ((!passed[i]) && !(i > 0 && nums[i] == nums[i-1] && !passed[i-1])
+                // (antiDuplicateCurLayer.find(nums[i]) == antiDuplicateCurLayer.end())
                 ) {
-                antiDuplicateCurLayer.insert(nums[i]);
+                // antiDuplicateCurLayer.insert(nums[i]);
                 passed[i] = true;
                 this->feasibleSolution.push_back(nums[i]);
                 backTrace(nums, passed);
@@ -40,6 +40,7 @@ public:
     {
         vector<bool> passed(nums.size(), false);
         this->feasibleSolution.clear();
+        sort(nums.begin(), nums.end());
         backTrace(nums, passed);
         return this->retAllPermute;
     }
