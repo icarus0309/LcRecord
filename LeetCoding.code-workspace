@@ -36,6 +36,10 @@
 		},
 		{
 			"path": "栈和队列"
+		},
+		{
+			"name": "myLeetcode",
+			"path": "."
 		}
 	],
 	"settings": {
